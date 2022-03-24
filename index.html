@@ -3,38 +3,52 @@
 <head>
 <title>WEB-암호화폐</title>
 <meta charset="utf-8">
-</head>
 
+<script>
+
+var Links = {
+  setColor: function(color){
+      var alist= document.querySelectorAll('a');
+      var i =0;
+      while(i<alist.length){
+          alist[i].style.color=color;
+          i=i+1;
+    }
+  }
+}
+
+var Body = {
+  setColor:function (color){
+    document.querySelector('body').style.color = color;
+  },//객체는 프로퍼티와 프로퍼티사이에 ,를 찍어야함
+  setbackgroundcolor:function(color){
+    document.querySelector('body').style.backgroundColor = color;
+  }
+}
+function nightDayHanddler(self){
+var target = document.querySelector('body');
+if(self.value === 'night'){
+Body.setbackgroundcolor('black');
+Body.setColor('white');
+self.value='day';
+
+links.setColor('powderblue');
+
+} else {
+Body.setbackgroundcolor('white');
+Body.setColor('black');
+self.value='night';
+
+links.setColor('blue');
+}
+}
+</script>
+</head>
 <body>
 <h1><a href="index.html">암호화폐</a></h1>
 
 <input type="button" value="night" onclick="
-var target = document.querySelector('body');
-if(this.value === 'night'){
-target.style.backgroundColor = 'black';
-target.style.color = 'white';
-this.value='day';
-
-var alist= document.querySelectorAll('a');
-var i =0;
-while(i<alist.length){
-    alist[i].style.color='powderblue';
-    i=i+1;
-  }
-} else {
-target.style.backgroundColor = 'white';
-target.style.color = 'black';
-this.value='night';
-
-var alist= document.querySelectorAll('a');
-var i =0;
-while(i<alist.length){
-    alist[i].style.color='blue';
-    i=i+1;
-   }
-}
-">
-
+nightDayHanddler(this)";
 <ol>
   <li><a href="1.html">암호화폐</a></li>
   <li><a href="2.html">비트코인</a></li>
