@@ -6,13 +6,13 @@ function getTime(){
     const minutes=date.getMinutes();//분
     const hour=date.getHours();//시간
     const seconds = date.getSeconds();//초
-    clockTitle.innerText = `${hour}:${minutes}:${seconds}`;
+    clockTitle.innerText = `${hour<10 ? `0${hour}` : hour}:${minutes<10 ? `0{minutes}` : minutes}:${seconds< 10 ? `0${seconds}` : seconds}`;//?는 백쉼표(`)안에서 if를 나타냄 
 //clockTitle안에 텍스트로 시간 :분:초 로 보여줘
 }
 
 function init(){
  getTime();
-
+setInterval(getTime,1000);//setInterval(함수,밀리언초)로 실시간출력
 }
 
 init();
