@@ -1,6 +1,8 @@
 import random
 
-levels = 5
+easy_level = 10
+hard_level = 5
+
 
 
 def check_answer(guess, answer, turns):
@@ -11,16 +13,16 @@ def check_answer(guess, answer, turns):
         print(f"{guess}는 정답보다 작습니다.")
         return turns-1
     else:
-        return -1
+        print("축하합니다. 정답입니다.")
     
 
 
 def game_level():
-    level = input(f"레벨을 선택해주세요 'hard' or  'easy':  ").lower
+    level = input(f"레벨을 선택해주세요 'hard' or  'easy':  ")
     if level == "easy" :
-        return levels+5
+        return easy_level
     else: 
-        return levels
+        return hard_level
         
 
 
@@ -34,20 +36,17 @@ def play_game():
     turns = game_level()
     guess = 0
     while guess != answer:
+        print(f"남은 턴수가 {turns}입니다.")
         guess = int(input("숫자 입력 : "))
         turns = check_answer(guess,answer,turns)
-        print(f"정답을 맞추지 못해 남은 턴수가 {turns}입니다.")
         
         
         if turns == 0 :
             print(f"기회가 다하여 게임에서 졌습니다.")
-        elif turns == -1:
-            print("정답입니다 축하합니다.")
-        regame = input(f"리게임을 하시겠습니까? 'y' or 'n'").lower
-        if regame =='y' :
-            return play_game()
-        elif guess != answer:
-            print("다시 입력하세요")
+            return
+            regame = input(f"리게임을 하시겠습니까? 'y' or 'n'").lower
+            if regame =='y' :
+                play_game()
+        
 
-play_game()      
-           
+play_game()                
