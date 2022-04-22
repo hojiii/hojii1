@@ -15,12 +15,19 @@ class Snake:
 
     def create_snake(self):
         for position in starting_positions:
-            new_segment = Turtle("square")
-            new_segment.color("white")
-            new_segment.penup()
-            new_segment.goto(position)
-            self.segments.append(new_segment)
+            self.add_segment(position)
 
+    def add_segment(self, position):
+        new_segment = Turtle("square")
+        new_segment.color("white")
+        new_segment.penup()
+        new_segment.goto(position)
+        self.segments.append(new_segment)
+
+    def extend(self):
+        #뱀꼬리 추가
+        self.add_segment(self.segments[-1].position())#음수를 써서 리스트를 꺼꾸로 표기할수있
+        """추가 세그먼트(마지막자리세그먼트.위치에)->마지막자리였던 3번자리에 추가 세그먼트를 추가한다"""
 
     def move(self):
         for seg_num in range(len(self.segments) - 1, 0, -1):
@@ -31,17 +38,17 @@ class Snake:
 
     def up(self):
         if self.head.heading() != DOWN:
-            self.segments[0].setheading(UP)
+            self.head.setheading(UP)
 
     def down(self):
         if self.head.heading() != UP:
-            self.segments[0].setheading(DOWN)
+            self.head.setheading(DOWN)
 
     def left(self):
         if self.head.heading() != RIGHT:
-            self.segments[0].setheading(LEFT)
+            self.head.setheading(LEFT)
 
     def right(self):
         if self.head.heading() != LEFT:
-            self.segments[0].setheading(RIGHT)
+            self.head.setheading(RIGHT)
 
