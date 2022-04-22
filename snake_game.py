@@ -35,7 +35,12 @@ while game_is_on:
         game_is_on = False
         scoreboard.game_over()
 
-    #꼬리와 충돌감지
+    for segment in snake.segments[1:]:
+        if snake.head.distance(segment) < 10:
+            game_is_on = False
+            scoreboard.game_over()
+
+    """" #꼬리와 충돌감지
     for segment in snake.segments:#모든 세그먼트를 하나씩 반복해서 가져옴
         if segment == snake.head:#만약 세그먼트가 머리일경우는 패스
             pass
@@ -43,7 +48,7 @@ while game_is_on:
             game_is_on = False
             scoreboard.game_over()
     #만약 머리가 꼬리의 아무세그먼트와 충돌시:
-        #게임종료
+        #게임종료"""
 
 
 
