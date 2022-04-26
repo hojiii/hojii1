@@ -1,23 +1,41 @@
-from menu import Menu, MenuItem
-from coffee_maker import CoffeeMaker
-from money_machine import MoneyMachine
+from turtle import Screen, Turtle
+from paddle import Paddle
+from ball import Ball
+import time
+screen = Screen()
+screen.bgcolor("black")
+screen.setup(width=800,height=600)
+screen.title("Pong")
+screen.tracer(0)
 
-money_machine = MoneyMachine()
-coffee_maker = CoffeeMaker()
-menu = Menu()
-is_on = True
+r_paddle = Paddle((350, 0))
+l_paddle = Paddle((-350,0))
+ball = Ball()
 
-while is_on :
-    option = menu.get_items()
-    choice = input(f"what would you {option}: ")
-    if choice == "off":
-        is_on = False
-    elif choice == "report":
-        money_machine.report()
-        coffee_maker.report()
-    else:
-        drink = menu.find_drink(choice)
-        if coffee_maker.is_resource_sufficient(drink) and money_machine.make_payment(drink.cost):
-            coffee_maker.make_coffee(drink)
+screen.listen()
+screen.onkey(r_paddle.go_up, "Up")
+screen.onkey(r_paddle.go_down, "Down")
+
+screen.onkey(l_paddle.go_up, "w")
+screen.onkey(l_paddle.go_down, "s")
 
 
+
+
+game_is_on = True
+
+while game_is_on:
+    time.sleep(0.1)
+    screen.update()
+    ball.move()
+
+
+
+
+
+
+
+
+
+
+screen.exitonclick()
